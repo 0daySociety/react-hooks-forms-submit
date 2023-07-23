@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Form(props) {
+function Form() {
   const [firstName, setFirstName] = useState("Sylvia");
   const [lastName, setLastName] = useState("Woods");
 
@@ -12,8 +12,20 @@ function Form(props) {
     setLastName(event.target.value);
   }
 
+
+  function DisplayInfo(e){
+    e.preventDefault();
+    console.log(firstName);
+    return(
+
+      <React.Fragment>
+        <h1>{firstName}</h1>
+        <h2>{lastName}</h2>
+      </React.Fragment>
+    )
+  }
   return (
-    <form>
+    <form  onSubmit={(e)=>DisplayInfo(e)}>
       <input type="text" onChange={handleFirstNameChange} value={firstName} />
       <input type="text" onChange={handleLastNameChange} value={lastName} />
       <button type="submit">Submit</button>
